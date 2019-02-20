@@ -7,7 +7,9 @@ class FlatsController < ApplicationController
     @markers = @flats.map do |flat|
       {
         lng: flat.longitude,
-        lat: flat.latitude
+        lat: flat.latitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { flat: flat }),
+        image_url: helpers.asset_url('house.png')
       }
     end
   end
